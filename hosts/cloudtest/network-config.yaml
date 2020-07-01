@@ -1,0 +1,11 @@
+version: 2
+ethernets:
+  interface0:
+    match:
+      name: en*
+    addresses:
+      - 192.168.100.11/24
+    gateway4: 192.168.100.254
+    nameservers:
+      search: [localdomain]
+      addresses: [192.168.100.254]

@@ -1,0 +1,21 @@
+#cloud-config
+hostname: cloudtest.localdomain
+user: myuser
+password: ubuntu
+chpasswd: { expire: True }
+ssh_pwauth: True
+
+disk_setup:
+  /dev/vdb:
+    table_type: 'mbr'
+    layout:
+      - [100,82]
+    overwrite: False
+
+fs_setup:
+  - label: swap
+    device: /dev/vdb1
+    filesystem: swap
+
+mounts:
+  - [ "LABEL=swap", none, swap, sw, "0", "0" ]
